@@ -1,1 +1,7 @@
-{% comment %} TODO: page to show the list of all movies {% endcomment %}
+{% for movie in movies %}
+    <h2>{{ movie.movie_name }}</h2>
+    <p>{{ movie.movie_director }}</p>
+    <p>{{ movie.movie_year }}</p>
+
+    <a href="{% url 'movie_detail' movie.pk %}"> details </a>
+{% endfor %}

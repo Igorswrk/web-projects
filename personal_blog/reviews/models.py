@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+
 
 class Movie(models.Model):
 
@@ -6,14 +8,15 @@ class Movie(models.Model):
     movie_updated_at = models.DateTimeField(auto_now=True)
 
     movie_name = models.CharField(max_length=100)
+    movie_year = models.IntegerField()
     movie_director = models.CharField(max_length=100)
-    movie_cover_image = models.ImageField(upload_to=f"personal_blog\\reviews\\static\\movies\\{self.movie_name}\\")
+    print
+    movie_cover_image = models.ImageField(upload_to='movies/images/movies_covers/')
     movie_rating = models.DecimalField(max_digits=3, decimal_places=1)
 
     def __str__(self):
         return self.movie_name
     
     def get_absolute_url(self):
-        return reverse("movie_detail", kwargs={"pk": self.pk})
+        return reverse('movie_detail', kwargs={"pk": self.pk})
 
-    
