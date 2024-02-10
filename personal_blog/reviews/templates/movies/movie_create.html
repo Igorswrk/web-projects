@@ -1,1 +1,5 @@
-{% comment %} TODO: form to create some movie. {% endcomment %}
+<form method="post" enctype="multipart/form-data"> 
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" value="submit" >Create</button>
+</form>
