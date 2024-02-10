@@ -4,3 +4,6 @@
 <p>{{ movie.rating }}</p>
 <img src="{{ movie.movie_cover_image.url }}" alt="capa">
 <p>{{ movie.movie_year }}</p>
+
+<a href="{% url 'movie_delete' movie.pk %}"> delete </a>
+<a href="{% url 'movie_update' movie.pk %}"> update </a>

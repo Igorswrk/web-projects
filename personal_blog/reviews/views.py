@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-# from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.urls import reverse_lazy
 
 from .models import Movie
+from .forms import MovieForm
 
 
 class MovieListView(ListView):
@@ -13,5 +15,32 @@ class MovieListView(ListView):
 class MovieDetailView(DetailView):
     model = Movie
     template_name = 'movie_detail.html'
-    context_object_name = movie
+    context_object_name = 'movie'
 
+class MovieCreateView(CreateView):
+    model = Movie
+    template_name = "movie_create.html"
+    fields = [
+        'movie_name', 
+        'movie_year', 
+        'movie_director', 
+        'movie_rating',
+        'movie_cover_image'
+    ]
+
+class MovieDeleteView(DeleteView):
+    model = Movie
+    template_name = "movie_delete.html"
+    success_url = reverse_lazy('movie_list')
+
+
+class MovieUpdateView(UpdateView):
+    model = Movie
+    template_name = "movie_update.html"
+    fields = [
+        'movie_name', 
+        'movie_year', 
+        'movie_director', 
+        'movie_rating',
+        'movie_cover_image'
+    ]
