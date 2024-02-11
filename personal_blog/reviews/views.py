@@ -27,6 +27,7 @@ class MovieCreateView(CreateView):
         'movie_rating',
         'movie_cover_image'
     ]
+    success_url = reverse_lazy('movie_list')
 
 class MovieDeleteView(DeleteView):
     model = Movie
@@ -37,6 +38,7 @@ class MovieDeleteView(DeleteView):
 class MovieUpdateView(UpdateView):
     model = Movie
     template_name = "movie_update.html"
+
     fields = [
         'movie_name', 
         'movie_year', 
