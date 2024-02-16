@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
-
+from django.db.models.signals import post_delete, post_save
+from django.dispatch import receiver
 
 class Movie(models.Model):
 
@@ -18,4 +19,12 @@ class Movie(models.Model):
     
     def get_absolute_url(self):
         return reverse('movie_detail', kwargs={"pk": self.pk})
+        
+
+@receiver(post_delete, sender=Movie)
+def delete_movie_image(sender, instance, **kwargs):
+    if instance.movie_cover_image:
+        instance.movie_cover_image.delete(save=False)
+
+    
 

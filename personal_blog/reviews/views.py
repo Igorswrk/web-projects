@@ -4,7 +4,6 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.urls import reverse_lazy
 
 from .models import Movie
-from .forms import MovieForm
 
 
 class MovieListView(ListView):
@@ -31,14 +30,12 @@ class MovieCreateView(CreateView):
 
 class MovieDeleteView(DeleteView):
     model = Movie
-    template_name = "movie_delete.html"
+    template_name = "movie_delete.html"    
     success_url = reverse_lazy('movie_list')
-
 
 class MovieUpdateView(UpdateView):
     model = Movie
     template_name = "movie_update.html"
-
     fields = [
         'movie_name', 
         'movie_year', 
