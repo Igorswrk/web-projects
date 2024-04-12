@@ -409,5 +409,4 @@ FodyWeavers.xsd
 
 .idea/*
 
-test/
-test_2/
+test*/

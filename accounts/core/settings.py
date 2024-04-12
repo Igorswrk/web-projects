@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-p6yo%i%b*gn-gqv4nt@_s9f&-m(^ak5nb*4y#hwxn8!9g6oe$_'
+SECRET_KEY = 'django-insecure-h@-kgttmwpq=hst4)v^mj0ip4e&osa$9pkbwk$n&t3j-7(3w6g'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -32,12 +32,12 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.admin',
-    'django.contrib.auth', # Provides us with multiple authentication views and URLs for handling login, logout, password change, password reset, etc.
+    'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accounts.apps.AccountsConfig', # Import accounts/apps.py/_class:AccountsConfig_/
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +55,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "templates"],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
