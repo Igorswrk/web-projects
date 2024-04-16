@@ -3,28 +3,36 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 
 # Create your views here.
-from .forms import CustomUserCreationForm, CustomUserChangeFrom
+from .forms import CustomUserCreationForm, CustomUserChangeForm
 from .models import CustomUser
 
 def home_view(request):
     return render(request, "home.html")
 
-def list_view(request):
+def user_profile_view(request, id):
+    try:
+        user = CustomUser.objects.get(id=id)
+        context = {'user': user}
+        
+    except user.DoesNotExist:
+        return "user not found!"
+    return render(request, "user_profile.html", context)
+
+def user_list_view(request):
     users = CustomUser.objects.all()
     context = {'users': users}
     return render(request, "user_list.html", context)
 
-def sign_view(request):
+def user_signup_view(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            return redirect("login.html")
+            form.save()
+            return redirect('login')
     else:
         form = CustomUserCreationForm()
-        context = {'form': form}
     
-    return render(request, 'signup.html', context)
+    return render(request, 'signup.html', {'form': form})
 
 def login_view(request):
     if request.method == 'POST':
@@ -35,12 +43,11 @@ def login_view(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect("login.html")
+                return redirect('home')
     else:
         form = AuthenticationForm()
-        context = {'form' : form}
 
-    return render(request, 'signup.html', context)
+    return render(request, 'login.html', {'form': form})
 
 def logout_view(request):
     logout(request)

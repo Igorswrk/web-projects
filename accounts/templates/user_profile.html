@@ -1,6 +1,4 @@
-{% block content %}{% endblock content %}
-
-<a href="{% url 'users' %}">User List</a>
+{% extends "base.html" %}
 
 <p>{{ user.username }}</p>
 <p>{{ user.about }}</p>
