@@ -6,7 +6,9 @@ from .views import (
     login_view,
     logout_view,
     user_list_view,
-    user_profile_view
+    user_profile_view,
+    user_delete_view,
+    user_update_view
 )
 
 urlpatterns = [
@@ -15,5 +17,7 @@ urlpatterns = [
     path("login/", login_view, name="login"),
     path("logout/", logout_view, name="logout"),
     path("users/", user_list_view, name="users"),
-    path("users/<int:pk>", user_profile_view, name="user"),
+    path("update/<int:id>", user_update_view, name="update"),
+    path("delete/<int:id>", user_delete_view, name="delete"),
+    path("users/<int:id>", user_profile_view, name="profile"),
 ]

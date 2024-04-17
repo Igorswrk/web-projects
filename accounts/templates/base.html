@@ -9,6 +9,8 @@
 <body>
     <main>
         Users APP
+        <p><a href="{% url 'home' %}">Home</a></p>
+        <p><a href="{% url 'users' %}">User List</a></p>
         {% block content %}{% endblock content %}
     </main>
 </body>

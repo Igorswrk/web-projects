@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %} 
+        <p>Deseja deletar o usuário "{{ user.username }} ?</p>
+        
+        <input type="submit" value="Confirme">
+    </form>
+{% endblock content %}
