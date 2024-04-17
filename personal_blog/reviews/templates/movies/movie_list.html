@@ -1,8 +1,0 @@
-{% for movie in movies %}
-    <h2>{{ movie.movie_name }}</h2>
-    <p>{{ movie.movie_director }}</p>
-    <p>{{ movie.movie_year }}</p>
-    <a href="{% url 'movie_detail' movie.pk %}"> details </a>
-{% endfor %}
-
-<a href="{% url 'movie_create' %}"><p>register a new movie</p></a>
