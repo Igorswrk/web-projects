@@ -1,0 +1,19 @@
+{% load embed_video_tags %}
+
+<a href="{% url 'movie_list' %}">movie list</a>
+
+<h2>{{ movie.movie_name }}</h2>
+<p>{{ movie.movie_director }}</p>
+<p>{{ movie.movie_year }}</p>
+<p>{{ movie.rating }}</p>
+
+{% if movie.movie_cover_image %}
+    <img src="{{ movie.movie_cover_image.url }}" alt="capa">
+{% endif %}
+
+<h2>Review</h2>
+
+
+
+<a href="{% url 'movie_delete' movie.pk %}"> delete </a>
+<a href="{% url 'movie_update' movie.pk %}"> update </a>
