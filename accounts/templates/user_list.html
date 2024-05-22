@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% for user in users %}
+    
+        <p>{{ user.username }}</p>
+        <p>{{ user.about }}</p>
+        <p>{{ user.amount_reviews }}</p>
+        <p>{{ user.date_enroll_at }}</p>
+        <p>{{ user.date_update_at }}</p>
+    
+    {% endfor %}
+{% endblock content %}
+    
